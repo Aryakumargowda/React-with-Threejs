@@ -1,8 +1,14 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Blender like site with Three js
 
-Currently, two official plugins are available:
+A viewport of the 3d scene where you can manipulate the objects in the scene using Vite-react
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### You should have three.js-fiber installed with node
+```bash
+npm install three @react-three/fiber gsap
+```
+paste the above command in the terminal of the project's root folder
+
+gsap is used for animations
+
+<img src="./sc/screen shot.png"/>
