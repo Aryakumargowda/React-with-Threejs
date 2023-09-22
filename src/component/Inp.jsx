@@ -171,6 +171,7 @@ function Inp() {
           checked={plane}
           onChange={() => setPlane((prev) => !prev)}
         />
+        <p style={{color:'#d94a40'}}>For navigation to work properly make sure orbit is enabled </p>
         Navigation
         <input
           type="checkBox"
