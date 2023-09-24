@@ -10,5 +10,7 @@ npm install three @react-three/fiber gsap
 paste the above command in the terminal of the project's root folder
 
 gsap is used for animations
+![Screenshot ](https://github.com/Aryakumargowda/React-with-Threejs/assets/74587299/08e260ee-7a3c-4d71-aa83-23f0abb9e9ab)
 
-<img src="./sc/screen shot.png"/>
+https://github.com/Aryakumargowda/React-with-Threejs/assets/74587299/30d94627-af06-4799-9761-0f26ea28ed38
+
