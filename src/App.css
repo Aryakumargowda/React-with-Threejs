@@ -1,18 +1,34 @@
 
 body{
   background: #aca5a5;
-  color: #9fbfde;
-  /* color: #d94a40; */
+  overflow-x:hidden;
+  color: #c5c7c3;
+  /* color: #e1c243; */
 }
 
 #cont{
   display: flex;
   background: rgb(51, 51, 51);
   font-family: "Poppins", sans-serif;
+  /* position: absolute; */
 }
 
-#can{
+.inp{
+  width: 25vw;
+  position: absolute;
+  left:73%;
+  text-align: center;
+  margin: .8em;
+  padding: .8em;
+  border-radius: 1em;
+  background: rgba(21, 21, 21, 0.649);
+  backdrop-filter: blur(3px);
+  
+}
+
+.can{
   height: 100vh !important ;
-  width: 80vw !important;
-  /* width: 100vw; */
+  width: 100vw !important;
+  overflow: -moz-hidden-unscrollable;
+  position: fixed;
 }

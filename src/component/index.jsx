@@ -1,20 +1,11 @@
 import {
-  Backdrop,
   PerspectiveCamera,
   OrbitControls,
-  Gltf,
-  Loader,
   Environment,
-  MeshReflectorMaterial,
-  MeshWobbleMaterial,
-  MeshPortalMaterial,
 } from "@react-three/drei";
-import { MeshRefractionMaterial } from "@react-three/drei/materials/MeshRefractionMaterial";
-import { useFrame } from "@react-three/fiber";
 import { useEffect, useRef, useContext } from "react";
 import * as THREE from "three";
 import gsap from "gsap";
-import Inp from "./Inp";
 import Event from "../context/Event";
 
 export default function Three() {
@@ -31,30 +22,32 @@ export default function Three() {
   const camref = useRef(null);
   const lightref = useRef(null);
   const ballref = useRef(null);
-  useEffect(() => {
-    if (!!ballref.current) {
-      // console.log(ballref.current)
-      gsap.to(ballref.current.position, {
-        x: -2,
-        duration: 2,
-        ease: "power1.out",
-      });
-      gsap.to(ballref.current.position, {
-        y: 1.1,
-        ease: "bounce.out",
-        duration: 1.5,
-      });
-    }
-    // if(!!camref.current){
-    //   gsap.to(camref.current.position,{
-    //        z:-3.24697,
-    //        y:2,
-    //        x:5,
-    //        ease:"expo.out",
-    //        duration:2,
-    //   })
-    // }
-  }, [ballref]);
+  // const objref =useRef(null)
+  // useEffect(() => {
+  //   if (!!ballref.current) {
+  //     console.log(ballref.current)
+  //     gsap.to(ballref.current.position, {
+  //       x: -2,
+  //       duration: 2,
+  //       ease: "power1.out",
+  //     });
+  //     gsap.to(ballref.current.position, {
+  //       y: 1.1,
+  //       ease: "bounce.out",
+  //       duration: 1.5,
+  //     });
+  //   }
+  //   // if(!!camref.current){
+  //   //   gsap.to(camref.current.position,{
+  //   //        z:-3.24697,
+  //   //        y:2,
+  //   //        x:5,
+  //   //        ease:"expo.out",
+  //   //        duration:2,
+  //   //   })
+  //   // }
+   
+  // }, [ballref]);
 
   useEffect(() => {
     if (!!camref.current) {
@@ -67,7 +60,7 @@ export default function Three() {
       });
     }
     if (!!lightref.current) {
-      // console.log(lightref.current)
+      console.log(lightref.current)
       gsap.to(lightref.current.position, {
         x: user.lightx,
         y: user.lighty,
@@ -79,7 +72,17 @@ export default function Three() {
         intensity: user.light,
       });
     }
+    if(!!ballref.current){
+      gsap.to(ballref.current.position,{
+        x:user.spherex,
+        y:user.spherey,
+        z:user.spherez,
+        ease:"expo.out",
+        duration:.5,
+      })
+    }
   }, [user]);
+
   // webGL
 
   return (
@@ -97,7 +100,7 @@ export default function Three() {
         enableZoom={user.nav}
         enabled={user.orb}
       />
-      <mesh position={[2, 3, 0]} castShadow ref={ballref}>
+      <mesh position={[2,3,0]} castShadow ref={ballref}>
         <sphereGeometry args={[user.ballr, 32, 32]} />
         <meshPhysicalMaterial
           color="#ffffff"
@@ -114,7 +117,8 @@ export default function Three() {
         <planeGeometry args={[6, 8]} />
         <meshStandardMaterial color="#ffffff" />
       </mesh>
-      <axesHelper position={[0, 0, 0]} />
+
+      {/* <axesHelper position={[0, 0, 0]} /> */}
       {/* <gridHelper /> */}
       {/* <ambientLight args={["#ffffff", .2]} /> */}
       <spotLight
@@ -123,6 +127,12 @@ export default function Three() {
         castShadow={user.axis}
         ref={lightref}
       />
+      {/* <pointLight
+        args={[user.lightcolor, 10, 200, angletoradians(35), 2]}
+        position={[3, 2.5, 0]}
+        castShadow={user.axis}
+        ref={lightref}
+      /> */}
 
       {/* Environments */}
       <Environment background blur={15}>

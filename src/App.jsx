@@ -10,13 +10,19 @@ import Eventprovider from "./context/EventProvider";
 function App() {
   return (
     <div id="cont">
+     
     <Eventprovider >
+      <div className="can">
+
       <Canvas id="can" shadows>
         <Suspense fallback={null}>
           <Three />
         </Suspense>
       </Canvas>
+      </div>
+      <div className="inp">
       <Inp id="inps"/>
+      </div>
     </Eventprovider>
     </div>
   );
