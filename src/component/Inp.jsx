@@ -11,6 +11,8 @@ function Inp() {
   const [light, setLight] = useState(10);
   const [lightcolor, setLightcolor] = useState("#ffffff");
   const [ballr, setBallr] = useState(1);
+  const [sphere,setSphere]=useState(true)
+  const [cube,setCube]=useState(true)
   const [spherex, setSpherex] = useState(-2);
   const [spherey, setSpherey] = useState(1.1);
   const [spherez, setSpherez] = useState(0);
@@ -46,6 +48,8 @@ function Inp() {
       plane,
       nav,
       lightcolor,
+      sphere,
+      cube,
     });
   }, [
     camx,
@@ -65,6 +69,8 @@ function Inp() {
     orb,
     nav,
     lightcolor,
+    sphere,
+    cube,
   ]);
 
   return (
@@ -171,6 +177,26 @@ function Inp() {
         </div>
         <div className="sect">
           <p>Sphere</p>
+          <div className="comp">
+          <label>Sphere</label>
+          <input
+            type="checkBox"
+            name="sphere"
+            id="sphere"
+            checked={sphere}
+            onChange={() => setSphere((prev) => !prev)}
+          />
+        </div>
+        <div className="comp">
+          <label>Cube</label>
+          <input
+            type="checkBox"
+            name="cube"
+            id="cube"
+            checked={cube}
+            onChange={() => setCube((prev) => !prev)}
+          />
+        </div>
           <div className="comp">
             <label>Object X</label>
             <input

@@ -22,6 +22,7 @@ export default function Three() {
   const camref = useRef(null);
   const lightref = useRef(null);
   const ballref = useRef(null);
+  const cuberef = useRef(null);
   // const objref =useRef(null)
   // useEffect(() => {
   //   if (!!ballref.current) {
@@ -46,7 +47,7 @@ export default function Three() {
   //   //        duration:2,
   //   //   })
   //   // }
-   
+
   // }, [ballref]);
 
   useEffect(() => {
@@ -56,11 +57,11 @@ export default function Three() {
         y: user.camy,
         z: user.camz,
         ease: "expo.out",
-        duration: .6,
+        duration: 0.6,
       });
     }
     if (!!lightref.current) {
-      console.log(lightref.current)
+      console.log(lightref.current);
       gsap.to(lightref.current.position, {
         x: user.lightx,
         y: user.lighty,
@@ -72,14 +73,23 @@ export default function Three() {
         intensity: user.light,
       });
     }
-    if(!!ballref.current){
-      gsap.to(ballref.current.position,{
-        x:user.spherex,
-        y:user.spherey,
-        z:user.spherez,
-        ease:"expo.out",
-        duration:.5,
-      })
+    if (!!ballref.current && user.sphere) {
+      gsap.to(ballref.current.position, {
+        x: user.spherex,
+        y: user.spherey,
+        z: user.spherez,
+        ease: "expo.out",
+        duration: 0.5,
+      });
+    }
+    if (!!cuberef.current && user.cube) {
+      gsap.to(cuberef.current.position, {
+        x: user.spherex,
+        y: user.spherey,
+        z: user.spherez,
+        ease: "expo.out",
+        duration: 0.5,
+      });
     }
   }, [user]);
 
@@ -100,13 +110,20 @@ export default function Three() {
         enableZoom={user.nav}
         enabled={user.orb}
       />
-      <mesh position={[2,3,0]} castShadow ref={ballref}>
-        <sphereGeometry args={[user.ballr, 32, 32]} />
+      <mesh position={[2, 3, 0]} castShadow ref={ballref} visible={user.sphere}>
+        <sphereGeometry args={[user.ballr, 32, 32]}/>
         <meshPhysicalMaterial
           color="#ffffff"
           roughness={0.21}
           clearcoatRoughness={28}
         />
+      </mesh>
+      <mesh position={[-2, 1.1, 0]} castShadow ref={cuberef} visible={user.cube}>
+        <boxGeometry args={[user.ballr,user.ballr,user.ballr]}/>
+        <meshPhysicalMaterial
+          color="#ffffff"
+          roughness={0.21}
+          clearcoatRoughness={28}/>
       </mesh>
       <mesh
         position={[-0.6, 0.1, 0]}
@@ -120,7 +137,7 @@ export default function Three() {
 
       {/* <axesHelper position={[0, 0, 0]} /> */}
       {/* <gridHelper /> */}
-      {/* <ambientLight args={["#ffffff", .2]} /> */}
+      <ambientLight args={["#ffffff", .01]} />
       <spotLight
         args={[user.lightcolor, 10, 200, angletoradians(35), 2]}
         position={[3, 2.5, 0]}
@@ -134,8 +151,10 @@ export default function Three() {
         ref={lightref}
       /> */}
 
+      {/* <Light */}
+
       {/* Environments */}
-      <Environment background blur={15}>
+      <Environment background >
         <mesh>
           <sphereGeometry args={[35, 64, 64]} />
           <meshBasicMaterial color={user.encolor} side={THREE.BackSide} />

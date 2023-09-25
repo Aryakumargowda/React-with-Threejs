@@ -5,7 +5,7 @@ A viewport of the 3d scene where you can manipulate the objects in the scene usi
 
 ### You should have three.js-fiber installed with node
 ```bash
-npm install three @types/three @react-three/fiber gsap
+npm install --legacy-peer-deps @react-three/fiber @react-three/drei maath react-tilt react-vertical-timeline-component @emailjs/browser framer-motion react-router-dom gsap
 ```
 paste the above command in the terminal of the project's root folder
 
