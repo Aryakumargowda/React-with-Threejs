@@ -111,7 +111,7 @@ export default function Three() {
         enabled={user.orb}
       />
       <mesh position={[2, 3, 0]} castShadow ref={ballref} visible={user.sphere}>
-        <sphereGeometry args={[user.ballr, 32, 32]}/>
+        <sphereGeometry args={[user.ballr, 32, 32]} />
         <meshPhysicalMaterial
           color="#ffffff"
           roughness={0.21}
